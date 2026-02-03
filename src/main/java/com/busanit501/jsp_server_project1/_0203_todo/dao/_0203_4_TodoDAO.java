@@ -160,5 +160,30 @@ public class _0203_4_TodoDAO {
         return vo;
     }
 
+    //수정하기
+    // 글 등록하기와 구조가 비슷함.
+    // 수정할 내용을 담을 데이터가 받아 왔다고 가정하고, 진행.
+    // 나중에, 화면에서 수정할 내용을 받아오게 됩니다. 받아오면, 그 데이터를 여기 : _0203_1_TodoVO todoVO 담기.
+    // 여기서, _0203_1_TodoVO todoVO에서 변경할 내용을 꺼내서, -> 데이터베이스에 수정합니다.
+    public void updateOne(_0203_1_TodoVO todoVO) throws Exception {
+
+        // 글쓰기 작업과 거의 동일하므로, 위의 기능을 복붙해서, 수정하기.
+        // sql 구문이 다름.
+        // sql 문장 작성,
+        String sql = "update tbl_todo set title = ?, dueDate = ?, finished = ? where tno = ?";
+        // 디비 서버에 연결하는 도구 설정.(반복)
+        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        // sql 문장을 담아 두는 기능 (반복)
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        // values (?, ? ,?) 값 지정 해주기.
+        preparedStatement.setString(1, todoVO.getTitle());
+        preparedStatement.setDate(2, Date.valueOf(todoVO.getDueDate()));
+        preparedStatement.setBoolean(3, todoVO.isFinished());
+        preparedStatement.setLong(4, todoVO.getTno());
+        // sql 문장을 디비 서버에 전달. 쓰기, 수정, 삭제 : executeUpdate()
+        // 조회 : executeQuery();
+        preparedStatement.executeUpdate();
+    }
+
 
 } //_0203_4_TodoDAO 닫기
