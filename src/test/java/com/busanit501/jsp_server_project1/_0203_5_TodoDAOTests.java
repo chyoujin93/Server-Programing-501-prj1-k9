@@ -41,7 +41,7 @@ public class _0203_5_TodoDAOTests {
         // builder 패턴 이용해보기.
         // 사용 할 때, _0203_1_TodoVO 클래스에, 어노테이션으로 , @Builder  필요함.
         _0203_1_TodoVO vo = _0203_1_TodoVO.builder()
-                .title("샘플제목")
+                .title("샘플제목22")
                 .dueDate(LocalDate.now())
                 .build();
 
