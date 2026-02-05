@@ -3,7 +3,7 @@ package com.busanit501.jsp_server_project1._0205_todo.service;
 import com.busanit501.jsp_server_project1._0205_todo.dao._0205_3_TodoDAO;
 import com.busanit501.jsp_server_project1._0205_todo.domain._0205_4_TodoVO;
 import com.busanit501.jsp_server_project1._0205_todo.dto._0205_2_TodoDTO;
-import com.busanit501.jsp_server_project1._0205_todo.util._0204_3_MapperUtil;
+import com.busanit501.jsp_server_project1._0205_todo.util._0205_8_MapperUtil;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
@@ -27,7 +27,7 @@ public enum _0205_1_TodoService {
     _0205_1_TodoService() {
         // 위에 전역으로 선언만 한 객체를 여기서 초기화해서, 사용할수 있게 하기.
         dao = new _0205_3_TodoDAO();
-        modelMapper = _0204_3_MapperUtil.INSTANCE.get();
+        modelMapper = _0205_8_MapperUtil.INSTANCE.get();
     }
 
 

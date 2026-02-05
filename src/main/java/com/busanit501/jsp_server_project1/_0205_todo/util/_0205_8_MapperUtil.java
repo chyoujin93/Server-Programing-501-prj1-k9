@@ -4,14 +4,14 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 import org.modelmapper.convention.MatchingStrategies;
 
-public enum _0204_3_MapperUtil {
+public enum _0205_8_MapperUtil {
     INSTANCE;
 
     // 외부 기능 추가, 가져와서 사용하기.
     private ModelMapper modelMapper;
 
     // 생성자 작성.
-    _0204_3_MapperUtil() {
+    _0205_8_MapperUtil() {
         // 위에서 선언만 한 modelMapper, 생성자 호출 할 때, 초기화를 사용할수 있게 만들기.
         modelMapper = new ModelMapper();
         // 모델 맵퍼 사용하기 위한 , 기본 설정, (초기설정)한번만 설정 후, 재사용.

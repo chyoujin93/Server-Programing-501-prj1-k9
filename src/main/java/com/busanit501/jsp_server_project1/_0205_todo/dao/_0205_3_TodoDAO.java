@@ -21,7 +21,7 @@ public class _0205_3_TodoDAO {
         String now = null;
         // try ~ resource with, 자동 닫기 내포되어 있음.
         // DB 서버에 연결하는 도구(디비 서버 주소, 계정 정보, 나머지 캐시 옵션이 설정되어 있는 객체)
-        try (Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        try (Connection connection = _0205_9_ConnectionUtil.INSTANCE.getConnection();
              // 현재 시간을 조회하는 쿼리를 전달하고
              PreparedStatement preparedStatement = connection.prepareStatement("select now()");
              // 디비 서버에 전달하고, 결과를 받아와서, 담아두기.
@@ -39,7 +39,7 @@ public class _0205_3_TodoDAO {
     // try ~ catch 구문 대신에, 어노테이션을 이용해서, @Cleanup
     public String getTime2() throws Exception {
         // @Cleanup와 같은 효과 = connection.close()
-        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup Connection connection = _0205_9_ConnectionUtil.INSTANCE.getConnection();
         // 현재 시간을 조회하는 쿼리를 전달하고
         // @Cleanup와 같은 효과 = preparedStatement.close()
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement("select now()");
@@ -61,7 +61,7 @@ public class _0205_3_TodoDAO {
         // sql 문장 작성,
         String sql = "insert into tbl_todo (title, dueDate, finished) values (?, ? ,?)";
         // 디비 서버에 연결하는 도구 설정.
-        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup Connection connection = _0205_9_ConnectionUtil.INSTANCE.getConnection();
         // sql 문장을 담아 두는 기능
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         // values (?, ? ,?) 값 지정 해주기.
@@ -79,7 +79,7 @@ public class _0205_3_TodoDAO {
         String sql = "select * from tbl_todo";
 
         // 디비 서버에 연결하는 도구 설정.(반복)
-        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup Connection connection = _0205_9_ConnectionUtil.INSTANCE.getConnection();
 
         // sql 문장을 담아 두는 기능(반복)
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -124,7 +124,7 @@ public class _0205_3_TodoDAO {
         String sql = "select * from tbl_todo where tno = ?";
 
         // 디비 서버에 연결하는 도구 설정.(반복)
-        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup Connection connection = _0205_9_ConnectionUtil.INSTANCE.getConnection();
 
         // sql 문장을 담아 두는 기능(반복)
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -172,7 +172,7 @@ public class _0205_3_TodoDAO {
         // sql 문장 작성,
         String sql = "update tbl_todo set title = ?, dueDate = ?, finished = ? where tno = ?";
         // 디비 서버에 연결하는 도구 설정.(반복)
-        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup Connection connection = _0205_9_ConnectionUtil.INSTANCE.getConnection();
         // sql 문장을 담아 두는 기능 (반복)
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         // values (?, ? ,?) 값 지정 해주기.
@@ -192,7 +192,7 @@ public class _0205_3_TodoDAO {
         // 글쓰기, 수정하기, 거의 비슷, 수정하기를 코드 복붙해서, sql 수정해서 사용하기.
         String sql = "delete from tbl_todo where tno = ?";
         // 디비 서버에 연결하는 도구 설정.(반복)
-        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup Connection connection = _0205_9_ConnectionUtil.INSTANCE.getConnection();
         // sql 문장을 담아 두는 기능 (반복)
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         // values (?, ? ,?) 값 지정 해주기.

@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet(name = "_0204_7_TodoListController", urlPatterns = "/todo/list_0204")
+@WebServlet(name = "_0205_6_TodoListController", urlPatterns = "/todo/list_0205")
 @Log4j2 // 로그를 중요도에 따라서, 기록을 하는 방법을 다르게한다.
-public class _0204_7_TodoListController extends HttpServlet {
+public class _0205_6_TodoListController extends HttpServlet {
 
     // 컨트롤러에서,  목록조회하는 기능이 없음,
     // 1) 여기서 또 새로 만들거나 , 2) 이미 만들어진 기능을 가져와서 재사용.
@@ -36,7 +36,7 @@ public class _0204_7_TodoListController extends HttpServlet {
             // 서버에서, 객체에 담아서, 결과 화면에 전달.
             req.setAttribute("dtoList", dtoList);
             // 결과 화면으로 안내.
-            req.getRequestDispatcher("/WEB-INF/_0204_todo/list.jsp")
+            req.getRequestDispatcher("/WEB-INF/_0205_todo/list.jsp")
                     .forward(req,resp);
         } catch (Exception e) {
             log.error(e.getMessage());

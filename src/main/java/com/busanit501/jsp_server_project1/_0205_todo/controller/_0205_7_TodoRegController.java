@@ -14,8 +14,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Log4j2
-@WebServlet(name="_0204_8_TodoRegController", urlPatterns = "/todo/register_0204")
-public class _0204_8_TodoRegController extends HttpServlet {
+@WebServlet(name="_0205_7_TodoRegController", urlPatterns = "/todo/register_0205")
+public class _0205_7_TodoRegController extends HttpServlet {
     // 2가지 기능을 제공
     // 1) 화면 제공, 2) 글쓰기 작업 수행.
 
@@ -36,7 +36,7 @@ public class _0204_8_TodoRegController extends HttpServlet {
             throws ServletException, IOException {
 
         log.info("/todo/register, 글작성 폼 임시화면 get으로 요청 처리함. ");
-        req.getRequestDispatcher("/WEB-INF/_0204_todo/todoReg.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/_0205_todo/todoReg.jsp").forward(req,resp);
 
     }
 

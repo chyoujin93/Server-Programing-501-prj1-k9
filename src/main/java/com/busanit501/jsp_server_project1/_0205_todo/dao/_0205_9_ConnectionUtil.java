@@ -5,14 +5,14 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import java.sql.Connection;
 
-public enum _0203_3_ConnectionUtil {
+public enum _0205_9_ConnectionUtil {
 
     INSTANCE;
 
     private HikariDataSource ds; // DB 연결하는 도구.
 
     // 생성자
-    _0203_3_ConnectionUtil() {
+    _0205_9_ConnectionUtil() {
         // HikariConfig 클래스 이용해서, 옵션 설정.
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("org.mariadb.jdbc.Driver");

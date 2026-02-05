@@ -27,7 +27,6 @@
 </div>
 <div>
     <input type="checkbox" name="finished" ${dto.finished ? "checked" : ""}readonly>
-    ${dto.finished}
 </div>
 <div>
 <%--    주소부분은 오늘 날짜로 변경 해야함.--%>
