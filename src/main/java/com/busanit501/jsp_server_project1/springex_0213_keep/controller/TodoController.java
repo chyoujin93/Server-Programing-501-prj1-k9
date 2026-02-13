@@ -2,8 +2,9 @@ package com.busanit501.jsp_server_project1.springex_0213_keep.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 // http://localhost:8080/todo/ 관련된 업무는 내가 처리할게.
@@ -19,8 +20,14 @@ public class TodoController {
         log.info("todo list...");
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public void register() {
+//    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @GetMapping("/register")
+    public void getRegister() {
         log.info("todo register..get");
+    }
+
+    @PostMapping("/register")
+    public void postRegister() {
+        log.info("todo register..post");
     }
 }
