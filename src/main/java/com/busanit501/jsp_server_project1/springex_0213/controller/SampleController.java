@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Log4j2
 public class SampleController {
 
-    @GetMapping("/hello")
+    @GetMapping("/hello2")
     public void hello() {
         log.info("hello spring mvc ~~~");
     }
