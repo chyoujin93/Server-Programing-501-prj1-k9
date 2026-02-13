@@ -33,4 +33,14 @@
     <!--    자바의 애너테이션으로 @Controller 이용할려면, 등록된 파일의 위치 패키지를 시스템에게 알려줘야함. -->
     <context:component-scan base-package="com.busanit501.jsp_server_project1.springex_0213_keep.controller"/>
 
+<!--    날짜를 변경 해주는 기능을 시스템에 등록해서, 이용해보기. -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <bean class="com.busanit501.jsp_server_project1.springex_0213_keep.controller.formatter.LocalDateFormatter"/>
+            </set>
+        </property>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionService" />
 </beans>
+

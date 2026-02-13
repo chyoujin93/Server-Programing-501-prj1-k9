@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+
 @Controller
 @Log4j2
 public class SampleController {
@@ -25,12 +27,20 @@ public class SampleController {
     }
 
     // http://localhost:8080/ex2?name=이상용&age=20
-    // http://localhost:8080/ex2
+    // http://localhost:8080/ex
     @GetMapping("/ex2")
     public void ex2(@RequestParam(name = "name", defaultValue = "이름을 입력해주세요") String name,
-                    @RequestParam(name = "age", defaultValue = "나이를 입력해주세요") int age) {
+                    @RequestParam(name = "age", defaultValue = "20") int age) {
         log.info("ex2 ~~~");
         log.info("데이터 수집 : name : " + name);
         log.info("데이터 수집 : age : " + age);
     }
+
+    // http://localhost:8080/ex3?dueDate=2026-02-13
+    @GetMapping("/ex3")
+    public void ex3(LocalDate dueDate) {
+        log.info("ex3 ~~~");
+        log.info("데이터 수집 : dueDate : " + dueDate);
+    }
+
 }
