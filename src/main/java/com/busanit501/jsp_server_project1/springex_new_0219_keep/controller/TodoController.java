@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 // http://localhost:8080/todo2/ 관련된 업무는 내가 처리할게.
@@ -30,7 +31,7 @@ public class TodoController {
     }
 
     @PostMapping("/register")
-    public String postRegister(TodoDTO todoDTO) {
+    public String postRegister(TodoDTO todoDTO, RedirectAttributes redirectAttributes) {
         log.info("todo register..post");
         log.info("todoDTO : " + todoDTO);
         return "redirect:/todo2/list";
