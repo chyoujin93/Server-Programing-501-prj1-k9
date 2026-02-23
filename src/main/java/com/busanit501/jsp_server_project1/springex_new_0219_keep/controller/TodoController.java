@@ -36,7 +36,12 @@ public class TodoController {
         model.addAttribute("dtoList",dtoList);
     }
 
-    @GetMapping("/read")
+    // http://localhost:8080/todo2/read?tno=38 : 하나 조회 화면
+    // http://localhost:8080/todo2/modify?tno=38 : 수정폼 화면
+//    @GetMapping("/read")
+    // 재사용,
+    // modify.jsp 화면만 추가하면됨. (read.jsp, modify.jsp 화면이 거의 비슷함), 재사용.
+    @GetMapping({"/read", "/modify"})
     public void read(Long tno, Model model) {
         log.info("todo2 read...");
         TodoDTO todoDTO = todoService.getOne(tno);
