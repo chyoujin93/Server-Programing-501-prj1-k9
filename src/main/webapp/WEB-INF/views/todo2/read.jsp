@@ -84,9 +84,15 @@
                                 ${dto.finished? "checked" :""}>
                             </div>
                             <div>
-                                <button class="btn btn-primary" type="reset">수정하기</button>
-                                <button class="btn btn-secondary" type="submit">목록가기</button>
+                                <button class="btn btn-primary" type="button">수정하기</button>
+                                <button class="btn btn-secondary" type="button">목록가기</button>
                             </div>
+                        <script>
+                            document.querySelector(".btn-secondary").addEventListener("click", function (e) {
+                                self.location = "/todo2/list"
+                                },false
+                            )
+                        </script>
                     </div>
                 </div>
             </div>
