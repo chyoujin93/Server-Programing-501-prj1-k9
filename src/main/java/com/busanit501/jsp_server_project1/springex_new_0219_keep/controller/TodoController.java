@@ -55,6 +55,7 @@ public class TodoController {
         log.info("삭제할 tno 번호 확인 : " + tno);
 
         // 실제 삭제 기능은 아직 미구현,
+        todoService.remove(tno);
 
         return "redirect:/todo2/list";
     }
