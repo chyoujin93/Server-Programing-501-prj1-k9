@@ -53,7 +53,7 @@ public class TodoServiceTests {
     @Test
     public void testDeleteOne() {
         // 각자 데이터베이스에 있는 tno 번호 확인 후 , 테스트 진행하기.
-        todoService.getOne(37L);
+        todoService.remove(37L);
     }
 
 }
