@@ -120,6 +120,25 @@
                                 formObj.submit()
                                 }, false
                             )
+                            // 수정하기.
+                            document.querySelector(".btn-primary").addEventListener("click", function (e) {
+                                    // 기존 폼 태그의 전달이 될 주소를 변경.
+                                    // 기존 폼 태그의 요소를 선택해서, 속성을 변경.
+                                    const formObj = document.querySelector("form");
+
+                                    // 기존의 서버 주소로 가는 기능을 막기.
+                                    e.preventDefault();
+                                    // 해당 버튼 만 클릭을 했을 때, 이벤트가 동작하는게 원함.
+                                    // 만약, 버튼의 부모 요소를 클릭을 해도, 똑같이 클릭이 된 효과를 원하지 않아요.
+                                    // 버튼이 아니라, 그 버튼 요소의 부모 요소의 배경을 클릭해도, 똑같이 이벤트 호출이 되는 것을 막음.
+                                    // 결론, 삭제 버튼만 클릭해야, 삭제 기능을 동작 하겠다.
+                                    e.stopPropagation();
+
+                                    formObj.action = "/todo2/modify"
+                                    formObj.method = "post"
+                                    formObj.submit()
+                                }, false
+                            )
                         </script>
                     </div>
                 </div>
