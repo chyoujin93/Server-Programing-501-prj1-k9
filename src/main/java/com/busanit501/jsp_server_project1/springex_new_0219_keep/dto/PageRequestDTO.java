@@ -16,15 +16,15 @@ import javax.validation.constraints.Positive;
 public class PageRequestDTO {
     // 준비물
     // 1)페이지 번호 ,
-    @Builder.Default
-    @Min(value = 1)
-    @Positive
+    @Builder.Default // 만약, page 를 지정하지 않으면, 기본값으로 1로 설정
+    @Min(value = 1) // 최솟값 1로 고정, 만약, -10 안됨
+    @Positive // 양수만 됨.
     private int page = 1;
 
     // 2) 페이지 당 보여줄 갯수 ,
-    @Builder.Default
-    @Min(value = 10)
-    @Max(value = 100)
+    @Builder.Default // 만약, size 를 지정하지 않으면, 기본값으로 10로 설정
+    @Min(value = 10) // 최솟값 10로 고정, 만약, -10 안됨
+    @Max(value = 100) // 최댓값 100로 고정, 장난 치고 싶어요? 어떻게, 100000 개 하면 출력 해줄까? 궁금하네, 미안, 안됨. 100개 최대야.
     @Positive
     private int size = 10;
 

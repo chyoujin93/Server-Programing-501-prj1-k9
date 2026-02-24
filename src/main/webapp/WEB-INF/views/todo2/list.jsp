@@ -67,7 +67,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${dtoList}" var="dto">
+                            <%--<c:forEach items="${dtoList}" var="dto">--%>
+<%--                            responseDTO.dtoList 호출하는 것은 responseDTO의 getter 를 호출하는 효과와 동일--%>
+                            <c:forEach items="${responseDTO.dtoList}" var="dto">
                                 <tr>
                                     <th><c:out value="${dto.tno}"/></th>
                                     <td>

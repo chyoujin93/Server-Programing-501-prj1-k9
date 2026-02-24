@@ -1,5 +1,7 @@
 package com.busanit501.jsp_server_project1.springex_new_0219_keep.controller;
 
+import com.busanit501.jsp_server_project1.springex_new_0219_keep.dto.PageRequestDTO;
+import com.busanit501.jsp_server_project1.springex_new_0219_keep.dto.PageResponseDTO;
 import com.busanit501.jsp_server_project1.springex_new_0219_keep.dto.TodoDTO;
 import com.busanit501.jsp_server_project1.springex_new_0219_keep.service.TodoService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 // http://localhost:8080/todo2/ 관련된 업무는 내가 처리할게.
@@ -27,13 +28,36 @@ public class TodoController {
     // http://localhost:8080/todo2/list
     // 뷰 리졸버가 연결되어서,
     // todo2/list -> WEN-INF/views/todo2/list.jsp 연결 설정됨.
-    @RequestMapping("/list")
-    public void list(Model model) {
 
-        log.info("todo2 list...");
-        List<TodoDTO> dtoList = todoService.getAll();
-        // 서버 -> 화면에 데이터 목록들을 전달. 박스 이름 : dtoList, 내용물: DB에서 받아온 목록들
-        model.addAttribute("dtoList",dtoList);
+    // 페이징 처리 전, 목록 조회
+
+//    @RequestMapping("/list")
+//    public void list(Model model) {
+//
+//        log.info("todo2 list...");
+//        List<TodoDTO> dtoList = todoService.getAll();
+//        // 서버 -> 화면에 데이터 목록들을 전달. 박스 이름 : dtoList, 내용물: DB에서 받아온 목록들
+//        model.addAttribute("dtoList",dtoList);
+//    }
+
+    // 페이징 처리 후, 목록 조회
+    // 페이징 처리가 된 목록 조회로 변경. 기존에 페이징 처리가 안된 그냥 조회.
+    // 화면으로 부터, 보고 있는 페이지 번호를 받는다, page, size 받는다, 낱개로 받기 싫어서, DTO 로 받는다.
+    // PageRequestDTO
+    @RequestMapping("/list")
+    public void list(@Valid PageRequestDTO pageRequestDTO, BindingResult bindingResult,
+                     Model model) {
+        log.info("pageRequestDTO : " + pageRequestDTO);
+        log.info("todo2 list...페이징 처리가 된 리스트 조회");
+        // 유효성 체크에 걸린다면
+        if(bindingResult.hasErrors()) {
+            // 잠시 대기. 추후 작업 할 예정.
+            pageRequestDTO = PageRequestDTO.builder().build();
+        }
+
+        PageResponseDTO<TodoDTO> responseDTO = todoService.getList(pageRequestDTO);
+        // 서버 -> 화면에 데이터 목록들을 전달. 박스 이름 : responseDTO, 내용물: DB에서 받아온 목록들
+        model.addAttribute("responseDTO",responseDTO);
     }
 
     // http://localhost:8080/todo2/read?tno=38 : 하나 조회 화면
@@ -119,4 +143,6 @@ public class TodoController {
         log.info(" 유효성 통과한 데이터 todoDTO 2: " + todoDTO);
         return "redirect:/todo2/list";
     }
+
+
 }

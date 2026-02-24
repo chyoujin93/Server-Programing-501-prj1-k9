@@ -76,7 +76,7 @@ public class TodoServiceTests {
         // 준비물 :
         // 1) 화면으로부터 전달 받은 PageRequestDTO 필요.
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-                .page(1)
+                .page(2)
                 .size(10)
                 .build();
         PageResponseDTO<TodoDTO> pageResponseDTO = todoService.getList(pageRequestDTO);
