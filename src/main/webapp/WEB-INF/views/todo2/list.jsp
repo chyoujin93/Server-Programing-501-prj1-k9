@@ -84,7 +84,8 @@
                             </c:forEach>
                             </tbody>
                         </table>
-                        <div class="float-end">
+<%--                        <div class="float-end">--%>
+                        <div class="d-flex justify-content-center">
                             <ul class="pagination flex-wrap">
                                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                                 <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
