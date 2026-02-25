@@ -60,14 +60,16 @@
                         <form action="/todo2/list" method="get">
                             <input type="hidden" name="size" value="${pageRequestDTO.size}">
                             <div class="mb-3">
-                                <input type="checkbox" name="finished"> 완료여부
+                                <input type="checkbox" name="finished"
+                                ${pageRequestDTO.finished ? "checked" : ""}
+                                > 완료여부
                             </div>
                             <div class="mb-3">
                                 <input type="checkbox" name="types" value="t"
                                 ${pageRequestDTO.checkType("t") ? "checked" : ""}
                                 > 제목
                                 <input type="checkbox" name="types" value="w"
-                                ${pageRequestDTO.checkType("t") ? "checked" : ""}
+                                ${pageRequestDTO.checkType("w") ? "checked" : ""}
                                 > 작성자
 <%--                                c:out ,출력시, 검색어, 불필요한 자바스크립트 태그가 들어가면 보안상, 안좋으므로 --%>
 <%--                                안전한 출력을 선택--%>
