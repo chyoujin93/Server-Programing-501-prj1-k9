@@ -31,6 +31,7 @@
         update tbl_todo set title = #{title}, dueDate = #{dueDate}, finished = #{finished} where tno = #{tno}
     </update>
 
+<!--    필터의 완료여부와, 기한 조건을 넣을 경우 확인1-->
     <select id="selectList" resultType="com.busanit501.jsp_server_project1.springex_new_0219_keep.domain.TodoVO">
         select * from tbl_todo
         <where>
@@ -43,6 +44,18 @@
                         writer like concat('%',#{keyword},'%')
                     </if>
                 </foreach>
+            </if>
+
+                 <if test="finished">
+                     <trim prefix="and">
+                         finished
+                     </trim>
+                 </if>
+
+            <if test="from != null and to != null">
+                <trim prefix="and">
+                    dueDate between #{from} and #{to}
+                </trim>
             </if>
             order by tno desc limit #{skip}, #{size}
         </where>
