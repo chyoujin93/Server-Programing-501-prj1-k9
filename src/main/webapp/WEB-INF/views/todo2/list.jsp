@@ -63,21 +63,39 @@
                                 <input type="checkbox" name="finished"> 완료여부
                             </div>
                             <div class="mb-3">
-                                <input type="checkbox" name="types" value="t"> 제목
-                                <input type="checkbox" name="types" value="w"> 작성자
-                                <input type="text" name="keyword" class="form-control">
+                                <input type="checkbox" name="types" value="t"
+                                ${pageRequestDTO.checkType("t") ? "checked" : ""}
+                                > 제목
+                                <input type="checkbox" name="types" value="w"
+                                ${pageRequestDTO.checkType("t") ? "checked" : ""}
+                                > 작성자
+<%--                                c:out ,출력시, 검색어, 불필요한 자바스크립트 태그가 들어가면 보안상, 안좋으므로 --%>
+<%--                                안전한 출력을 선택--%>
+                                <input type="text" name="keyword" class="form-control"
+                                value='<c:out value="${pageRequestDTO.keyword}"/>'
+                                >
                             </div>
                             <div class="mb-3 input-group dueDateDiv">
-                                <input type="date" name="from" class="form-control">
-                                <input type="date" name="to" class="form-control">
+                                <input type="date" name="from" class="form-control"
+                                value="${pageRequestDTO.from}"
+                                >
+                                <input type="date" name="to" class="form-control"
+                                       value="${pageRequestDTO.to}"
+                                >
                             </div>
                             <div class="mb-3 input-group">
                                 <div class="float-end">
-                                    <button type="submit" name="from" class="btn btn-primary">검색하기</button>
-                                    <button type="reset" name="to" class="btn btn-info">초기화하기</button>
+                                    <button type="submit"  class="btn btn-primary">검색하기</button>
+                                    <button type="reset" class="btn btn-info clearBtn">초기화하기</button>
                                 </div>
                             </div>
-
+                            <script>
+                                document.querySelector(".clearBtn").addEventListener("click", function (e){
+                                    e.preventDefault()
+                                    e.stopPropagation()
+                                    self.location = `/todo2/list`
+                                })
+                            </script>
 
                         </form>
 

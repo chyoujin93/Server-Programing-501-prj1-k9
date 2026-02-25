@@ -9,6 +9,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @Builder
 @Data
@@ -58,4 +59,15 @@ public class PageRequestDTO {
     // 기간
     private LocalDate from;
     private LocalDate to;
+
+    // 검색시, 타입을 체크하는 기능 추가.
+    // 목록 화면에서, 해당 타입을 검사하는 용도로 사용할 예정,
+    public boolean checkType(String type) {
+        if(types == null || types.length ==0) {
+            return false;
+        }
+        // types = {"t", "w"}, types = {"t"}, types = {"w"}, types = {}
+        boolean result = Arrays.stream(types).anyMatch(type::equals);
+        return result;
+    }
 }
